@@ -1,0 +1,26 @@
+
+spring:
+  h2:
+    console:
+      enabled: true
+    serverPort: 9092
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: d
+    password: d
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+
+    properties:
+      javax:
+        persistence:
+          validation:
+            mode: none
+javax:
+  persistence:
+    validation:
+      mode: NONE
+
+#    hibernate:
+#      ddl-auto: update
