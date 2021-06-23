@@ -35,26 +35,20 @@ public class BaseTable {
         long i = this.id/10;
         return new BaseTable(this.id+1, i, "text" + i, this.value2, this.value3);
     }
+    public static String DEF_SQL = "CREATE TABLE no_indexes(id serial PRIMARY KEY, index2 integer, index3 VARCHAR(255), value2 VARCHAR(255), value3 VARCHAR(10000));";
 
     public static BaseTable start(long start){
-        return new BaseTable(start, start,"text","some litlle value",
-                "some big value thiw some long text for storing repited some time. "+
-                "some big value thiw some long text for storing repited some time. "+
-                "some big value thiw some long text for storing repited some time. "+
-                "some big value thiw some long text for storing repited some time. "+
-                "some big value thiw some long text for storing repited some time. "+
-                "some big value thiw some long text for storing repited some time. "+
-                "some big value thiw some long text for storing repited some time. "+
-                "some big value thiw some long text for storing repited some time. "+
-                "some big value thiw some long text for storing repited some time. "+
-                "some big value thiw some long text for storing repited some time. "
+        return new BaseTable(start, start,"text","some little text value",
+                "some long text value with  some text, repited some time. "+
+                "some long text value with  some text, repited some time. "+
+                "some long text value with  some text, repited some time. "+
+                "some long text value with  some text, repited some time. "+
+                "some long text value with  some text, repited some time. "+
+                "some long text value with  some text, repited some time. "+
+                "some long text value with  some text, repited some time. "+
+                "some long text value with  some text, repited some time. "+
+                "some long text value with  some text, repited some time. "+
+                "some long text value with  some text, repited some time. "
         );
     }
-    public static String CRT_STM="CREATE TABLE IF NOT EXISTS no_indexes (\n" +
-            "  \tid integer PRIMARY KEY,\n" +
-            "  \tindex2 integer,\n" +
-            "\tindex3 text,\n" +
-            "\tvalue2 text,\n" +
-            "\tvalue3 text\n" +
-            ")";
 }
