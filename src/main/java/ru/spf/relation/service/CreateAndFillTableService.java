@@ -13,11 +13,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Service
-public class TableCreateTestService {
+public class CreateAndFillTableService {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
-
 
     private static final int PARALEL_COUNT = 5;
 
@@ -50,7 +49,9 @@ public class TableCreateTestService {
         executor.submit(task((PARALEL_COUNT-1)*count, recordsCount - (PARALEL_COUNT-1)*count -1, latch));
         latch.await();
     }
-
+    public void creaTetable() {
+        jdbcTemplate.execute(BaseTable.DEF_SQL);
+    }
     public void execSQL(String sql) {
         try {
             jdbcTemplate.execute(sql);
