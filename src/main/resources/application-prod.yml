@@ -9,6 +9,7 @@ spring:
     url: jdbc:postgresql://192.168.0.103:5432/postgres
     username: postgres
     password: postgres
+    maxActive: 30
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL94Dialect
     show-sql: false

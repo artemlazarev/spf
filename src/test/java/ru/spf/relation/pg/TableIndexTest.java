@@ -16,7 +16,7 @@ public class TableIndexTest {
     @Autowired
     CreateAndFillTableService service;
 
-    private final int RECORDS_COUNT = 300_000;
+    private final int RECORDS_COUNT = 30000;
 
     @BeforeEach
     public void init(){
