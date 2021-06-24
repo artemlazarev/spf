@@ -43,5 +43,25 @@ public class TableIndexTest {
     public void integerIndexCreation() throws InterruptedException, SQLException {
         ;
     }
+    @Test
+    public void write1CompositeIndex() throws InterruptedException {
+        service.execSQL("CREATE INDEX index2_idx ON no_indexes (index2)");
+        service.execSQL("CREATE INDEX index23_idx ON no_indexes (index2, index3);\n");
+        service.filTable(RECORDS_COUNT);
+    }
+    @Test
+    public void write1CompositeIndex1IntIndex() throws InterruptedException {
+        service.execSQL("CREATE INDEX index2_idx ON no_indexes (index2)");
+        service.execSQL("CREATE INDEX index23_idx ON no_indexes (index2, index3);\n");
+        service.filTable(RECORDS_COUNT);
+    }
+
+    @Test
+    public void write1Composite1Int1Text () throws InterruptedException {
+        service.execSQL("CREATE INDEX index2_idx ON no_indexes (index2)");
+        service.execSQL("CREATE INDEX index3_idx ON no_indexes (index3)");
+        service.execSQL("CREATE INDEX index23_idx ON no_indexes (index2, index3);\n");
+        service.filTable(RECORDS_COUNT);
+    }
 
 }
