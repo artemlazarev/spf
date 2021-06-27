@@ -18,23 +18,30 @@ public class CreateAndFillTableService {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    private static final int PARALEL_COUNT = 5;
+    private static final int PARALEL_COUNT = 32;
 
     @Autowired
     TestTableRepository repository;
 
     Callable<Integer> task(int start, int count, CountDownLatch latch){
         return () -> {
-            BaseTable current = BaseTable.start(start);
-            repository.save(current);
-            int i;
-            for (i = start; i < start+count; i++) {
-                current = current.getNext();
+            int i = 0;
+            try {
+                BaseTable current = BaseTable.start(start);
                 repository.save(current);
+                for (i = start; i < start+count; i++) {
+                    current = current.getNext();
+                    repository.save(current);
+                }
+                System.out.println("Complete for interval started at: " + start);
             }
-            System.out.println("Complete for interval started at: " + start);
-            latch.countDown();
-            return i;
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            finally {
+                latch.countDown();
+            }
+                return i;
         };
 
     };

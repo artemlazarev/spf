@@ -20,9 +20,6 @@ services:
         limits:
           cpus: '3'
           memory: 2G
-        reservations:
-          cpus: '3'
-          memory: 2G
 
   pgadmin:
     container_name: pgadmin_container
@@ -46,4 +43,9 @@ networks:
 
 volumes:
   postgres:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/mnt/md0/test/pg'
   pgadmin:
